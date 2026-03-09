@@ -1,0 +1,21 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "source": "OneView/City_County/MapServer/5 City Limits", "derived": "extent bbox" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-86.445884, 32.206711],
+            [-86.069115, 32.206711],
+            [-86.069115, 32.481961],
+            [-86.445884, 32.481961],
+            [-86.445884, 32.206711]
+          ]
+        ]
+      }
+    }
+  ]
+}

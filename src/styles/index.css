@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure map container stays below panel when side-by-side */
+.leaflet-container {
+  isolation: isolate;
+}

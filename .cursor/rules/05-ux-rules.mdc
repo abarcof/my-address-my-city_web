@@ -1,0 +1,22 @@
+---
+description: UX rules for resident-facing design
+alwaysApply: true
+---
+
+The app is for residents, not GIS analysts.
+
+UX principles:
+- simple language
+- one-screen layout with panel + tabs
+- map-first
+- concise cards
+- no dense technical tables
+- no raw GIS field names in the main UI
+- clear next steps
+
+Recommended module labels:
+- This Address
+- What's Closest
+- What's Happening Nearby
+- Next Steps
+- Recent Official Context
