@@ -7,6 +7,14 @@ const SERVICE_PATH = 'Parcels/FeatureServer/0';
 const OUT_FIELDS =
   'ParcelNo,PID,OwnerName,PropertyAddr1,PropertyCity,PropertyState,PropertyZip,TotalValue,Calc_Acre,AssessmentClass';
 
+const PROPERTY_TYPES: Record<string, string> = {
+  R: 'Residential',
+  C: 'Commercial',
+  I: 'Industrial',
+  A: 'Agricultural',
+  E: 'Exempt',
+};
+
 function trim(s: unknown): string {
   return typeof s === 'string' ? s.trim() : '';
 }
@@ -37,6 +45,7 @@ export async function fetchParcel(
     PropertyZip,
     TotalValue,
     Calc_Acre,
+    AssessmentClass,
   } = feature.attributes;
 
   const parcelId =

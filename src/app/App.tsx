@@ -25,8 +25,6 @@ const queryClient = new QueryClient({
 
 function PanelContent() {
   const activeTab = useAddressStore((s) => s.activeTab);
-  const coordinates = useAddressStore((s) => s.coordinates);
-  const isWithinMontgomery = useAddressStore((s) => s.isWithinMontgomery);
 
   return (
     <>

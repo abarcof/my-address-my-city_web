@@ -94,6 +94,7 @@ export function HappeningCategoryCard({
               <span className="text-green-600" aria-hidden>✓</span>
               None in the last {emptyMonths} months
             </span>
+            <span className="text-xs text-gray-400">{emptyMessage}</span>
           </div>
         ) : (
           <>

@@ -23,14 +23,15 @@ function GetAlertsSection() {
 
   if (!coordinates) return null;
 
+  const selectedCoordinates = coordinates;
   const snapshotUrl = buildShareUrl({
-    lat: coordinates.lat,
-    lng: coordinates.lng,
+    lat: selectedCoordinates.lat,
+    lng: selectedCoordinates.lng,
     tab: 'next-steps',
     label: label || undefined,
   });
 
-  const subject = `Alert request: ${(label || `${coordinates.lat}, ${coordinates.lng}`).slice(0, 60)}`;
+  const subject = `Alert request: ${(label || `${selectedCoordinates.lat}, ${selectedCoordinates.lng}`).slice(0, 60)}`;
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,8 +43,8 @@ function GetAlertsSection() {
     const body = new URLSearchParams({
       email: emailValue,
       address: label || '',
-      lat: String(coordinates.lat),
-      lng: String(coordinates.lng),
+      lat: String(selectedCoordinates.lat),
+      lng: String(selectedCoordinates.lng),
       snapshot_url: snapshotUrl,
       _subject: subject,
       _replyto: emailValue,
