@@ -20,7 +20,19 @@ See `docs/bright-data-scaffold.md` for full details.
 
 ---
 
-## 2. Vercel Deployment (Prototype URL)
+## 2. GitHub Pages (Alternative to Vercel)
+
+You can also deploy to GitHub Pages for a free static host:
+
+1. **Settings** → **Pages** → **Source:** **GitHub Actions**
+2. Push to `main` — the workflow builds and deploys automatically
+3. URL: `https://abarcof.github.io/my-address-my-city/`
+
+See `docs/github-pages-setup.md` for details. **Note:** Bright Data API will not work on GitHub Pages; use Vercel for that.
+
+---
+
+## 3. Vercel Deployment (Prototype URL)
 
 To get the working prototype URL for the submission form:
 
@@ -36,7 +48,7 @@ To get the working prototype URL for the submission form:
 
 ---
 
-## 3. Submission Form Fields
+## 4. Submission Form Fields
 
 Use the content below to fill the hackathon submission form.
 
@@ -67,7 +79,7 @@ Use the content below to fill the hackathon submission form.
 
 ---
 
-## Checklist Before Submit
+## 5. Checklist Before Submit
 
 - [ ] Code pushed to GitHub
 - [ ] Vercel deployment live and tested
