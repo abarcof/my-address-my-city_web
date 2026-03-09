@@ -1,6 +1,8 @@
 # App Claims Registry
 ## My Address, My City
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 This document lists every factual claim the app makes or implies to residents. Each claim must trace to a verified data source. Claims that cannot be supported must not ship.
 
 ---
@@ -39,7 +41,7 @@ This document lists every factual claim the app makes or implies to residents. E
 | 1.6 | "Trash and recycling pickup is [schedule]" | QAlert_311 MapServer layer 6 | **Live-tested (2026-03-07)** — Layer 6 returns Day_1, Day_2 (e.g. "Wednesday", "Friday"). City Hall and residential both return data. Format: "Day_1 & Day_2". |
 | 1.7 | "Data sourced from City of Montgomery official GIS" | All of the above | **Strengthened (2026-03-07)** — browser CORS confirmed working. Architecture routes all data queries directly to `gis.montgomeryal.gov` from the browser. The claim is now stronger because direct browser access is confirmed and no proxy intermediary is needed. Must still be re-verified once all Phase 1 queries are running in-app. If any query falls back to cached/static data, this claim must be qualified. |
 
-### Next Steps Module
+### City Resources Module
 
 | # | Claim the app makes | Data source | Status |
 |---|---|---|---|
@@ -80,15 +82,14 @@ This document lists every factual claim the app makes or implies to residents. E
 
 ## Phase 3 Claims
 
-### What's Happening Nearby Module
+### Nearby City Records Module (What's Happening Nearby)
 
 | # | Claim the app makes | Data source | Status |
 |---|---|---|---|
 | 3.1 | "There are [N] code violations near this address" | HostedDatasets/Code_Violations/FeatureServer/0 | **Implementation-constrained (2026-03-07)** — endpoint validated, spatial radius query works. Integrated in Phase 3. |
 | 3.2 | "Recent building permits were issued nearby" | HostedDatasets/Construction_Permits/FeatureServer/0 | **Implementation-constrained (2026-03-07)** — endpoint validated, spatial radius query works. Integrated in Phase 3. |
-| 3.3 | "Nearby city service requests include [types]" | HostedDatasets/Received_311_Service_Request/MapServer/0 | **Implementation-constrained (2026-03-07)** — correct service (not QAlert_311). Integrated in Phase 3. Data may be archived. |
-| 3.4 | Radius used for "nearby" | Fixed 0.5 miles, disclosed in UI | **Implementation-constrained** — UI states "Recent public records within approximately 0.5 miles of this location." |
-| 3.5 | Records shown are from the last 12–24 months | Client-side filter on CaseDate, IssuedDate, Create_Date | **Implementation-constrained** — Code violations: 24 months (server-side WHERE + client filter). Building permits and 311: 12 months. Records with invalid dates are excluded. |
+| 3.3 | Radius used for "nearby" | Fixed 0.5 miles, disclosed in UI | **Implementation-constrained** — UI states "Records from the last 12 months within 0.5 mi." |
+| 3.4 | Records shown are from the last 12 months | Client-side filter on CaseDate, IssuedDate | **Implementation-constrained** — Code violations and building permits: 12 months. Records with invalid dates are excluded. 311 is not implemented. |
 
 ---
 
@@ -98,7 +99,7 @@ This document lists every factual claim the app makes or implies to residents. E
 
 | # | Claim the app makes | Data source | Status |
 |---|---|---|---|
-| 4.1 | "The app can optionally show recent official website context from city-owned public webpages using Bright Data" | Bright Data SERP API; domains montgomeryal.gov, capture.montgomeryal.gov, gis.montgomeryal.gov | **Implementation-constrained (2026-03-08)** — Module implemented. Server-side only. Clearly labeled as "Recent updates from official city websites." Disabled by default. |
+| 4.1 | "The app can optionally run a live web search of official city domains and show up to 3 results — public notices, permits, news" | Bright Data SERP API; domains montgomeryal.gov, capture.montgomeryal.gov, gis.montgomeryal.gov | **Implementation-constrained (2026-03-08)** — Module implemented. Server-side only. Uses SERP API for dynamic, contextual results; not static links. Disabled by default. |
 
 **Rule:** Any content from Bright Data must be clearly labeled as official website context and not presented as official city GIS/dataset data. This module is supplemental only.
 

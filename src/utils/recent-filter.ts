@@ -1,5 +1,5 @@
 /**
- * Recency filter for What's Happening Nearby.
+ * Recency filter for Nearby City Records.
  *
  * Primary rule: exact N-month cutoff — records with sortTimestamp < cutoff are excluded.
  * Safeguard: year >= currentYear - 1 — reinforcement only, not the main rule.

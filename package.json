@@ -2,6 +2,7 @@
   "name": "my-address-my-city",
   "private": true,
   "version": "1.0.0",
+  "author": "Aicardo Barco Fajardo <abarcof@gmail.com>",
   "type": "module",
   "engines": {
     "node": "20.x"

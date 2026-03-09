@@ -2,6 +2,8 @@
 
 **Purpose:** Share this document with an AI (or paste into a new chat) so it understands the full project in one place. Use when onboarding a new agent or when context is lost.
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 ---
 
 ## 1. What This Is
@@ -12,9 +14,9 @@
 
 1. **What is true about this address?** — Zoning, flood zone, neighborhood, council district (This Address)
 2. **What is closest to this address?** — Nearest park, community center, hospital (What's Closest)
-3. **What is happening near this address?** — Code violations, building permits, 311 requests, last 12 months, 0.5 miles (What's Happening Nearby)
+3. **What is happening near this address?** — Code violations, building permits, last 12 months, 0.5 miles (Nearby City Records)
 
-Plus **Next Steps** — four official city links. **Civic Snapshot Summary** at top. **Demo presets** (City Hall, Residential, Outside Montgomery). **About This Data**, **Copy Link**.
+Plus **City Resources** — four official city links and Request alerts. **Civic Snapshot Summary** at top. **Demo presets** (City Hall, Residential, Outside Montgomery). **About This Data**, **Copy Link**.
 
 ---
 
@@ -47,10 +49,10 @@ Property data: direct browser fetch to Montgomery GIS (`gis.montgomeryal.gov`). 
 
 | Module | Status |
 |--------|--------|
-| This Address | Zoning, flood, neighborhood, council district (with fallback) |
+| This Address | Zoning, flood risk, neighborhood, council district, property record, trash schedule |
 | What's Closest | Parks, community centers, hospitals + approximate distance |
-| What's Happening Nearby | Code violations, permits, 311 — 12 months, 0.5 mi |
-| Next Steps | Four official city links |
+| Nearby City Records | Code violations, building permits — 12 months, 0.5 mi |
+| City Resources | Four official city links + Request alerts |
 | Civic Snapshot Summary | Compact summary at top when location selected |
 | Demo presets | City Hall, Residential, Outside Montgomery |
 | About This Data | Transparency drawer |
@@ -71,7 +73,7 @@ Browser (SPA)
 
 **Folder structure:**
 - `src/features/` — snapshot, closest, happening, summary, official-live-context
-- `src/services/datasets/` — zoning, flood-zone, neighborhoods, council, parks, hospitals, community-centers, code-violations, building-permits, service-requests
+- `src/services/datasets/` — zoning, flood-zone, neighborhoods, council, parcels, trash-schedule, parks, hospitals, community-centers, code-violations, building-permits
 - `src/components/` — layout, map, search, cards, feedback, tabs
 - `src/config/` — app-config.ts, feature-flags.ts
 - `api/` — official-live-context.ts (Vercel serverless, Bright Data)
@@ -81,7 +83,7 @@ Browser (SPA)
 ## 6. Bright Data Bonus (Optional)
 
 - **Module:** Official Live Context — up to 3 recent official web updates from city domains
-- **Location:** Section below What's Happening Nearby (when enabled)
+- **Location:** Section below Nearby City Records (when enabled)
 - **Flag:** `BRIGHT_DATA_ENABLED` in `src/config/feature-flags.ts` (default: false)
 - **Env:** `BRIGHTDATA_API_KEY` or `BRIGHT_DATA_API_KEY`; optional `BRIGHT_DATA_SERP_ZONE`
 - **Allowed domains:** montgomeryal.gov, capture.montgomeryal.gov, gis.montgomeryal.gov
@@ -130,4 +132,4 @@ Browser (SPA)
 - **Build:** `npm run build`
 - **Dev:** `npm run dev` (Vite) or `vercel dev` (with API)
 - **Demo flow:** 60–90 seconds; see demo-script-final.md
-- **Config:** `src/config/app-config.ts` — city name, radius, Next Steps links, etc.
+- **Config:** `src/config/app-config.ts` — city name, radius, City Resources links, etc.

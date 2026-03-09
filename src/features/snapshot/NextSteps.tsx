@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useAddressStore } from '../../store/address-store';
 import { OutOfBoundsNotice } from '../../components/feedback/OutOfBoundsNotice';
+import { OfficialLiveContextCard } from '../official-live-context/OfficialLiveContextCard';
 import { APP_CONFIG } from '../../config/app-config';
 import { buildShareUrl } from '../../utils/url-state';
+import { BRIGHT_DATA_ENABLED } from '../../config/feature-flags';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xbdzdgge';
 
@@ -174,6 +176,11 @@ export function NextSteps() {
         </a>
       ))}
       <GetAlertsSection />
+      {BRIGHT_DATA_ENABLED && (
+        <div className="pt-2 border-t border-gray-100">
+          <OfficialLiveContextCard />
+        </div>
+      )}
       <p className="text-xs text-gray-400 pt-2">
         This app provides informational content only. It does not replace official city services or decisions.
       </p>

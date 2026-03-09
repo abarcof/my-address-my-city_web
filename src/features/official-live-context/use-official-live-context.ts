@@ -16,19 +16,28 @@ function buildApiUrl(label: string, neighborhood: string | undefined): string {
   return `${path}${qs ? `?${qs}` : ''}`;
 }
 
+const FETCH_TIMEOUT_MS = 15000;
+
 async function fetchOfficialLiveContext(
   label: string,
   neighborhood: string | undefined
 ): Promise<OfficialLiveContextResponse> {
   const url = buildApiUrl(label, neighborhood);
-  const res = await fetch(url);
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
-  if (!res.ok) {
+  try {
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeoutId);
+    if (!res.ok) {
+      return { items: [], unavailable: true };
+    }
+    const data = (await res.json()) as OfficialLiveContextResponse;
+    return data ?? { items: [] };
+  } catch {
+    clearTimeout(timeoutId);
     return { items: [], unavailable: true };
   }
-
-  const data = (await res.json()) as OfficialLiveContextResponse;
-  return data ?? { items: [] };
 }
 
 export function useOfficialLiveContext() {

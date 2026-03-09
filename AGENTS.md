@@ -3,6 +3,8 @@
 ## Project
 This repository contains the hackathon project "My Address, My City" for the City of Montgomery, Alabama.
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 ## Core product idea
 Build a resident-friendly civic web app that turns one address or one clicked map location into a clear public-information snapshot.
 
@@ -40,10 +42,9 @@ Module 2: What's Closest
 - no advanced interpolation
 - simple and explainable proximity logic only
 
-Module 3: What's Happening Nearby
-- nearby 311
+Module 3: Nearby City Records (What's Happening Nearby)
 - nearby code violations
-- nearby permits
+- nearby building permits
 
 Module 4: Finalist Package
 - polished repo
@@ -58,7 +59,7 @@ Phase 1:
 - address search
 - map click selection
 - This Address module
-- Next Steps module
+- City Resources module
 - fully shippable MVP
 
 Phase 2:
@@ -67,10 +68,9 @@ Phase 2:
 - improved summaries and UX polish
 
 Phase 3:
-- What's Happening Nearby module
-- nearby 311
+- Nearby City Records module
 - nearby code violations
-- nearby permits
+- nearby building permits
 
 Phase 4:
 - finalist package

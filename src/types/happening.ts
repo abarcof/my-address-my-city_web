@@ -1,5 +1,5 @@
 /**
- * Phase 3: What's Happening Nearby — normalized types
+ * Phase 3: Nearby City Records — normalized types
  */
 
 export type HappeningCategory = 'code-violations' | 'building-permits';

@@ -45,28 +45,54 @@ function slug(id: string): string {
   return id.replace(/[^a-z0-9-]/gi, '-').slice(0, 50);
 }
 
+const BRIGHT_DATA_TIMEOUT_MS = 20000;
+
 async function fetchViaBrightData(query: string): Promise<{ organic?: Array<{ link?: string; title?: string; description?: string }> } | null> {
   const apiKey = process.env.BRIGHTDATA_API_KEY || process.env.BRIGHT_DATA_API_KEY;
   if (!apiKey?.trim()) return null;
 
   const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}&hl=en&gl=us`;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), BRIGHT_DATA_TIMEOUT_MS);
 
-  const res = await fetch('https://api.brightdata.com/request', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      zone: process.env.BRIGHT_DATA_SERP_ZONE || 'serp_api1',
-      url: searchUrl,
-      format: 'json',
-    }),
-  });
+  try {
+    const res = await fetch('https://api.brightdata.com/request', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        zone: process.env.BRIGHT_DATA_SERP_ZONE || 'serp_api1',
+        url: searchUrl,
+        format: 'json',
+      }),
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
 
-  if (!res.ok) return null;
-  const json = (await res.json()) as { organic?: Array<{ link?: string; title?: string; description?: string }> };
-  return json;
+    if (!res.ok) return null;
+    const json = (await res.json()) as {
+      organic?: Array<{ link?: string; title?: string; description?: string }>;
+      results?: Array<{ type?: string; url?: string; link?: string; title?: string; description?: string; snippet?: string }>;
+    };
+    // Bright Data can return organic[] (link,title,description) or results[] (url,title,snippet)
+    if (json.organic?.length) return json;
+    if (json.results?.length) {
+      const organic = json.results
+        .filter((r) => r.type === 'organic' || !r.type)
+        .map((r) => ({
+          link: r.url || r.link,
+          title: r.title,
+          description: r.description || r.snippet,
+        }));
+      return { organic };
+    }
+    return json;
+  } catch {
+    clearTimeout(timeoutId);
+    return null;
+  }
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {

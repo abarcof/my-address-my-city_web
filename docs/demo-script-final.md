@@ -3,14 +3,16 @@
 **Official demo script for Phase 4 submission.**  
 Target duration: **60–90 seconds**
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 ---
 
 ## What Is Implemented (Do Not Mention Otherwise)
 
-- This Address: zoning, flood zone, neighborhood, council district
+- This Address: zoning, flood risk, neighborhood, council district, property record, trash schedule
 - What's Closest: nearest park, community center, hospital
-- What's Happening Nearby: code violations, permits, 311 requests (last 12 months, 0.5 miles)
-- Next Steps: four official city links (report issue, permits, public records, stay informed)
+- Nearby City Records: code violations, building permits (last 12 months, 0.5 miles)
+- City Resources: four official city links (report issue, permits, public records, stay informed) + Request alerts
 - Civic Snapshot Summary: compact summary at top of panel
 - Demo presets: City Hall, Residential, Outside Montgomery
 - About This Data: method transparency drawer
@@ -65,11 +67,11 @@ Point to the map markers and distance labels.
 
 ---
 
-### Step 4 — What's Happening Nearby (12 seconds)
+### Step 4 — Nearby City Records (12 seconds)
 
-**Action:** Click the "What's Happening Nearby" tab.
+**Action:** Click the "Nearby City Records" tab.
 
-> "Code violations, building permits, 311 requests — within half a mile and from the last 12 months only. The app shows how many recent records and a few examples."
+> "Code violations and building permits — within half a mile and from the last 12 months only. The app shows how many recent records and a few examples."
 
 Point to the "Showing X recent" badges and cards.
 
@@ -77,9 +79,9 @@ Point to the "Showing X recent" badges and cards.
 
 ---
 
-### Step 5 — Next Steps (8 seconds)
+### Step 5 — City Resources (8 seconds)
 
-**Action:** Click the "Next Steps" tab.
+**Action:** Click the "City Resources" tab.
 
 > "The app connects residents to action — report an issue, apply for permits, request public records, or stay informed. All links go to official city resources."
 
@@ -109,8 +111,8 @@ Point to the links. Do not click them.
 | Search or preset | 5s |
 | This Address | 10s |
 | What's Closest | 10s |
-| What's Happening Nearby | 12s |
-| Next Steps | 8s |
+| Nearby City Records | 12s |
+| City Resources | 8s |
 | Out of bounds (optional) | 5s |
 | Closing | 5s |
 | **Total** | **~55–60s** (add 5s if including out-of-bounds) |

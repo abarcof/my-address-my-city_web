@@ -1,6 +1,8 @@
 # Technical Architecture
 ## My Address, My City
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 ---
 
 ## Design Philosophy
@@ -26,7 +28,7 @@ This application is **resident-facing, not GIS-analyst-facing**. Every architect
 │  └────┬─────┘  └────┬─────┘  │  │ This Address │  │ │
 │       │              │        │  │ What's Close │  │ │
 │       ▼              ▼        │  │ Happening    │  │ │
-│  ┌─────────────────────────┐  │  │ Next Steps   │  │ │
+│  ┌─────────────────────────┐  │  │ City Resources │  │ │
 │  │      Zustand Store      │  │  └──────────────┘  │ │
 │  │  (selected coordinates) │  └────────────────────┘ │
 │  └────────────┬────────────┘                         │
@@ -268,7 +270,7 @@ This section defines exactly what Phase 1 includes and what it intentionally exc
 - Zustand store holding the selected coordinates
 - ArcGIS queries for: **zoning** (live-tested), **flood zones** (live-tested), **neighborhoods** (endpoint confirmed)
 - "This Address" tab: displays all queried data in plain-language cards
-- "Next Steps" tab: static links to city resources
+- "City Resources" tab: links to city services and Request alerts
 - AppShell layout: search bar top, map center, side panel with tabs
 - Loading, error, empty, and out-of-bounds states for every data card
 - Basic responsive layout (desktop-first, passable on tablet)
@@ -279,7 +281,7 @@ This section defines exactly what Phase 1 includes and what it intentionally exc
 
 ### Phase 1 intentionally excludes:
 - "What's Closest" tab and any proximity/distance logic
-- "What's Happening Nearby" tab and any 311/violations/permits data
+- "Nearby City Records" tab and violations/permits data
 - Bright Data or any external enrichment
 - Advanced search (autocomplete, fuzzy match, address suggestions)
 - Multiple address comparison
@@ -299,7 +301,7 @@ These rules are non-negotiable:
 
 1. **Phase 1 must be shippable at all times.** Every commit after Phase 1 is complete must leave the app in a working, demoable state.
 
-2. **Phase 2 does not start until Phase 1 is stable.** "Stable" means: address search works, map click works, This Address displays data, Next Steps shows links, layout is clean, no console errors.
+2. **Phase 2 does not start until Phase 1 is stable.** "Stable" means: address search works, map click works, This Address displays data, City Resources shows links, layout is clean, no console errors.
 
 3. **Phase 3 does not start until Phase 2 is stable.** "Stable" means: What's Closest tab works with at least one validated resource type, proximity display is readable.
 
@@ -319,7 +321,7 @@ These rules are non-negotiable:
 - ArcGIS queries (core): **zoning** (validated), **flood zones** (validated), **neighborhoods** (high confidence)
 - ArcGIS queries (optional): council districts (if query validates), parcels (if resolved)
 - "This Address" tab with normalized card display
-- "Next Steps" tab with static city links
+- "City Resources" tab with city links and Request alerts
 - AppShell layout: search bar + map + side panel
 - Loading, error, empty, and out-of-bounds states
 - Direct browser fetch (CORS confirmed — no proxy needed)
@@ -331,11 +333,10 @@ These rules are non-negotiable:
 - "What's Closest" tab with distance + name cards
 - Map markers for nearest resources
 
-### Phase 3 — What's Happening Nearby
+### Phase 3 — Nearby City Records
 - Code violations within radius (from open data portal)
 - Building permits within radius (from open data portal)
-- 311 requests within radius (if dataset validates — see data-sources.md)
-- "What's Happening Nearby" tab with summary cards
+- "Nearby City Records" tab with summary cards (311 not implemented)
 - Map layer showing nearby activity points
 
 ### Phase 4 — Finalist Package

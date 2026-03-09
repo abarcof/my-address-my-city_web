@@ -1,6 +1,8 @@
 # Product Requirements Document
 ## My Address, My City
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 ---
 
 ## 1. Product Objective
@@ -58,13 +60,13 @@ A single main screen with:
 - side panel (left or right)
 - tabs or modules inside the panel
 
-### Tabs / Modules
+### Tabs / Modules (as implemented)
 
 - This Address
 - What's Closest
-- What's Happening Nearby
-- Next Steps
-- Phase 4 only: Recent Official Context / Bonus
+- Nearby City Records
+- City Resources
+- Phase 4 only: Recent Official Context / Bonus (when Bright Data enabled)
 
 This structure is preferred over multiple screens because it:
 - makes the demo easier to follow
@@ -110,11 +112,13 @@ The app should feel:
 
 **Purpose:** Show the exact information associated with the queried point.
 
-**Content:**
+**Content (as implemented):**
 - Zoning
-- Flood context
+- Flood risk
 - Council district
-- Neighborhood / parcel context
+- Neighborhood
+- Property record (parcel)
+- Trash & recycling schedule
 - Short plain-language summary
 
 **Value:** This module covers the core question: "What does this address mean within Montgomery's urban system?" The Zoning Lookup, Flood Zone Lookup, and address-based ecosystem are among the strongest and most buildable parts of the open data portal.
@@ -167,15 +171,16 @@ This helps with originality/impact because it turns a layer viewer into an app w
 **Radius disclosure rule:** Once implemented, the app must state the radius used for "nearby" queries (e.g., "within 0.5 miles"). The radius must be documented and consistent across datasets within this module. If different datasets use different radii, each must be labeled individually.
 
 ---
-
-### Module 4 — Next Steps
+### Module 4 — City Resources
 
 **Purpose:** Convert information into action.
 
 **Content:**
 - Report an issue
-- Zoning verification
-- Official city resources
+- Apply for permits
+- Request public records
+- Stay informed
+- Request alerts (Formspree)
 - Official links
 
 **Rule:** The app informs and guides. It does not replace official decisions or transactional city systems.
@@ -206,7 +211,7 @@ This phase alone must be ready to submit.
 **Validated core includes:**
 - Address search (geocoding via Nominatim or fallback)
 - Map click selection
-- This Address module: **zoning** (live-tested), **flood zones** (live-tested), **neighborhoods** (high confidence)
+- City Resources module
 - Next Steps module
 - Main layout
 - Stable, functional demo
@@ -251,8 +256,7 @@ This phase alone must be ready to submit.
 **Outcome:** Highly competitive. Differentiation starts here.
 
 ---
-
-### Phase 3 — What's Happening Nearby
+### Phase 3 — Nearby City Records
 
 **Includes:**
 - Nearby 311
@@ -305,7 +309,7 @@ This phase alone must be ready to submit.
 If a later-phase module is unstable at submission time, it must be **hidden or removed** from the final build rather than shipped in a broken state. A clean, stable app with fewer modules always scores higher than a broken app with more modules.
 
 Specifically:
-- If Phase 2 (What's Closest) is unstable, remove the tab entirely. Submit Phase 1 only.
+- If Phase 3 (Nearby City Records) is unstable, remove the tab. Submit Phases 1 + 2.
 - If Phase 3 (What's Happening Nearby) is unstable, remove the tab. Submit Phases 1 + 2.
 - If Phase 4 bonus (Recent Official Context) is unstable, remove the tab. Submit Phases 1 + 2 + 3.
 - Never leave a broken, half-working, or error-prone tab visible in the submitted app or demo recording.
@@ -326,8 +330,7 @@ Before starting Phase 2, ALL of the following must be true:
 - [ ] Zoning query returns and displays data for test points (validated)
 - [ ] Flood zone query returns and displays data for test points (validated)
 - [ ] Neighborhoods query returns and displays data for test points (high confidence)
-- [ ] Council district and/or parcels display data OR gracefully show "Not available" (both are optional)
-- [ ] "Next Steps" tab shows working links
+- [ ] "City Resources" tab shows working links
 - [ ] Loading, empty, and error states all display correctly
 - [ ] The app can be demoed end-to-end in under 50 seconds without errors
 - [ ] No console errors in a clean run
@@ -457,16 +460,14 @@ The app must handle non-happy-path states gracefully. Residents should never see
 
 ---
 
-## 17. 311 Data Uncertainty
+## 17. 311 Data — Not Implemented
 
-The PRD lists "nearby 311 service requests" as part of Phase 3. However, validation of Montgomery's 311 data has revealed uncertainty:
+311 service requests are **not integrated** in the current app. The tab "Nearby City Records" shows code violations and building permits only.
 
-- The `QAlert/QAlert_311/MapServer` on Montgomery's ArcGIS server appears to contain **sanitation and garbage schedule layers** (garbage days, recycling routes, bulk drop-off), not general 311 service requests (potholes, streetlights, noise complaints).
-- The open data portal has a "311" tag in search, but the dataset format and actual content are unconfirmed.
+- The `QAlert/QAlert_311/MapServer` contains **sanitation and garbage schedule layers** (used in This Address for trash schedule), not general 311 requests.
+- `HostedDatasets/Received_311_Service_Request` is documented in `data-sources.md` as the correct 311 endpoint but is **not wired into the app**.
 
-**Decision:** 311 remains a Phase 3 target, but it is **not a dependency**. If 311 data validates as expected, include it. If it turns out to be sanitation-only or unusable, Phase 3 still ships with code violations and building permits, which are both partially verified.
-
-This uncertainty must be resolved during the pre-implementation validation step (see `docs/data-sources.md`).
+Phase 3 ships with code violations and building permits.
 
 ---
 
@@ -489,8 +490,9 @@ The demo must be tight, visual, and self-explanatory.
 | 1 | Open the app | 3s | Clean map of Montgomery, search bar prominent |
 | 2 | Type "103 N Perry St" (City Hall) | 5s | Address autocomplete, map zooms to location |
 | 3 | Show "This Address" tab | 12s | Zoning, flood zone, council district, neighborhood info in clean cards |
-| 4 | Click "Next Steps" tab | 8s | Actionable links: report issue, verify zoning, city contacts |
+| 4 | Click "City Resources" tab | 8s | Actionable links: report issue, apply for permits, city contacts |
 | 5 | Click "What's Closest" tab | 12s | Nearest park, community center with distance labels and map markers |
+| 6 | Click "Nearby City Records" tab | 12s | Recent code violations, permits displayed as summary cards + map dots |
 | 6 | Click "What's Happening Nearby" tab | 12s | Recent code violations, permits displayed as summary cards + map dots |
 | 7 | Click a different point on the map | 8s | All tabs update instantly — demonstrates the app works for any location |
 | 8 | Close with tagline | 5s | "One address. Your city. Clear answers." |
@@ -506,7 +508,7 @@ The demo must be tight, visual, and self-explanatory.
 |---|---|
 | Product | My Address, My City |
 | Phase 1 | This Address |
-| Phase 2 | What's Closest |
+| Phase 3 | Nearby City Records |
 | Phase 3 | What's Happening Nearby |
 | Phase 4 | Finalist Package + Bonus |
 | Approach | civic, simple, visual, Montgomery-specific, real-data-first, GitHub-centered, build-by-phases, score-optimized |

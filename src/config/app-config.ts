@@ -26,7 +26,7 @@ export const APP_CONFIG = {
   /** Boundary source (path to GeoJSON; point-in-polygon check) */
   boundarySource: 'City Limits from Montgomery GIS',
 
-  /** Official city links for Next Steps */
+  /** Official city links for City Resources tab */
   nextStepsLinks: [
     {
       title: 'Report a city issue',

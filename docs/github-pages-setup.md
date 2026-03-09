@@ -1,5 +1,7 @@
 # GitHub Pages Setup — My Address, My City
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 The project includes a GitHub Actions workflow to build and deploy to GitHub Pages.
 
 ## 1. Enable GitHub Pages

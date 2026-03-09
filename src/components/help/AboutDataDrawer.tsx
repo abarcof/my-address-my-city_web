@@ -60,6 +60,18 @@ export function AboutDataDrawer({ isOpen, onClose }: AboutDataDrawerProps) {
               </section>
             ))}
           </div>
+          <div className="pt-2 border-t border-gray-100">
+            <h3 className="text-sm font-medium text-gray-900 mb-1">Contact</h3>
+            <p className="text-sm text-gray-600">
+              Aicardo Barco Fajardo ·{' '}
+              <a
+                href="mailto:abarcof@gmail.com"
+                className="text-blue-600 hover:text-blue-800 font-medium"
+              >
+                abarcof@gmail.com
+              </a>
+            </p>
+          </div>
           <button
             type="button"
             onClick={onClose}

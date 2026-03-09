@@ -1,6 +1,8 @@
 # Data Sources
 ## My Address, My City
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 This document inventories all data sources planned for the application, grouped by build phase. Each source includes a validation status reflecting what has been confirmed as of the documentation date.
 
 ---
@@ -221,7 +223,7 @@ All ArcGIS endpoints below are relative to this base unless otherwise noted.
 
 ---
 
-## Phase 3 — What's Happening Nearby
+## Phase 3 — Nearby City Records
 
 ### Code Violations
 
@@ -257,7 +259,7 @@ All ArcGIS endpoints below are relative to this base unless otherwise noted.
 | Status | **Live-tested (2026-03-07)** |
 | Source | https://gis.montgomeryal.gov/server/rest/services/HostedDatasets/Received_311_Service_Request/MapServer/0 |
 | Portal reference | opendata.montgomeryal.gov/datasets/CityMGM::received-311-service-requests-1 (DCAT) |
-| Notes | Point geometry. Fields: Request_ID, Create_Date, Department, Request_Type, Address, District, Status, Close_Date, Origin. Real 311 requests (Building Maintenance, Urban Forestry, etc.). **Use this endpoint, NOT QAlert_311.** Layer has isDataArchived=true; data recency TBD. **Display filter:** A 12-month client-side filter is applied to all Phase 3 categories (code violations, building permits, 311 requests). Only records from the last 12 months are shown. Date fields: CaseDate, IssuedDate, Create_Date respectively. |
+| Notes | Point geometry. Fields: Request_ID, Create_Date, Department, Request_Type, Address, District, Status, Close_Date, Origin. Real 311 requests (Building Maintenance, Urban Forestry, etc.). **Use this endpoint, NOT QAlert_311.** Layer has isDataArchived=true; data recency TBD. **Not integrated in app** — code violations and building permits only. |
 
 ### Trash & Recycling Schedule (QAlert_311 MapServer layer 6)
 

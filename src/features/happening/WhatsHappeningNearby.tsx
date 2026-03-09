@@ -2,9 +2,7 @@ import { useAddressStore } from '../../store/address-store';
 import { useHappening } from './use-happening';
 import { HappeningCategoryCard } from '../../components/cards/HappeningCategoryCard';
 import { OutOfBoundsNotice } from '../../components/feedback/OutOfBoundsNotice';
-import { OfficialLiveContextCard } from '../official-live-context/OfficialLiveContextCard';
 import { APP_CONFIG } from '../../config/app-config';
-import { BRIGHT_DATA_ENABLED } from '../../config/feature-flags';
 
 const LOADING_MESSAGES = {
   codeViolations: 'Loading nearby code violations...',
@@ -146,12 +144,6 @@ export function WhatsHappeningNearby() {
           })}
         </p>
       </div>
-
-      {BRIGHT_DATA_ENABLED && (
-        <div className="pt-2 border-t border-gray-100">
-          <OfficialLiveContextCard />
-        </div>
-      )}
     </div>
   );
 }

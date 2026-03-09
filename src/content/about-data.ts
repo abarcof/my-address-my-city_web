@@ -36,7 +36,7 @@ export const ABOUT_DATA_SECTIONS: AboutDataSection[] = [
   },
   {
     title: 'Credits',
-    content: `Designed by Aicardo Barco Fajardo · City of ${APP_CONFIG.cityName}, Alabama · World Wide Vibes Hackathon 2026 · GenAI Works`,
+    content: `Designed by Aicardo Barco Fajardo · abarcof@gmail.com · City of ${APP_CONFIG.cityName}, Alabama · World Wide Vibes Hackathon 2026 · GenAI Works`,
   },
 ];
 

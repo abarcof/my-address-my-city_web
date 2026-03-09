@@ -1,16 +1,19 @@
 # Bright Data Bonus — Official Live Context
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 **Status:** Enabled. Zone `serp_api1` created, `BRIGHTDATA_API_KEY` in Vercel, feature flag on.
 
 ---
 
-## What It Does
+## What It Does (and Why It's Different)
 
-The **Official Live Context** module shows up to 3 recent official web updates from Montgomery city-owned domains. It appears as a compact section below "What's Happening Nearby" when enabled.
+The **Official Live Context** module is not just static links — it runs a **live web search** via Bright Data's SERP API. Unlike the curated City Resources links, this module:
 
-- Uses Bright Data SERP API to search `site:montgomeryal.gov` and `site:capture.montgomeryal.gov`
-- Displays title, source domain, short summary, and link to official page
-- Clearly labeled as "Recent updates from official city websites"
+- **Searches in real time** — Queries like `site:montgomeryal.gov [neighborhood] public notice`, `site:montgomeryal.gov Montgomery permits update`
+- **Returns dynamic results** — Titles and descriptions from Google's index of city domains; content changes as city sites update
+- **Contextual to location** — Uses the selected address/neighborhood in search queries
+- Displays up to 3 results: title, source domain, summary, and link to official page
 
 ---
 
@@ -30,7 +33,7 @@ The **Official Live Context** module shows up to 3 recent official web updates f
 |-----------|----------|---------|
 | API route | `api/official-live-context.ts` | Vercel serverless function; never exposes token |
 | Feature | `src/features/official-live-context/` | Hook + card component |
-| Integration | `WhatsHappeningNearby.tsx` | Renders card when flag enabled |
+| Integration | `NextSteps.tsx` (City Resources) | Renders card when flag enabled |
 | Flag | `src/config/feature-flags.ts` | `BRIGHT_DATA_ENABLED` (default: false) |
 
 ---

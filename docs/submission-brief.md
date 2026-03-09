@@ -12,9 +12,9 @@ Civic access means turning public data into answers people can use. When a resid
 
 **My Address, My City** is a resident-facing civic web app that turns one address or one map click into a civic snapshot. The app answers three questions:
 
-1. **What is true about this address?** — Zoning, flood zone, neighborhood, council district
+1. **What is true about this address?** — Zoning, flood risk, neighborhood, council district, property record, trash schedule
 2. **What is closest?** — Nearest park, community center, hospital
-3. **What is happening nearby?** — Code violations, permits, 311 requests (last 12 months)
+3. **What is happening nearby?** — Code violations, building permits (last 12 months)
 
 Plain language. No raw GIS terms. One screen, all answers.
 
@@ -22,7 +22,7 @@ Plain language. No raw GIS terms. One screen, all answers.
 
 - **Address-first** — Most civic portals are map-layer viewers. This inverts the paradigm: start from the resident's address, not from the data layer.
 - **Resident-facing** — Built for the person who lives there, not for analysts. Every label and message is written for clarity.
-- **What's Happening Nearby** — Turns static lookup into neighborhood awareness. Few civic apps surface recent code violations, permits, and 311 activity in one place.
+- **Nearby City Records** — Turns static lookup into neighborhood awareness. Few civic apps surface recent code violations and permits in one place.
 - **Single-screen UX** — No navigation complexity. One address, one screen, tab-based layout.
 
 ## Impact for Residents
@@ -31,7 +31,7 @@ Residents can quickly understand their location: zoning, flood risk, nearest par
 
 ## Why Montgomery
 
-Montgomery, Alabama has robust open GIS and open data. The City of Montgomery's ArcGIS server (gis.montgomeryal.gov) provides zoning, flood zones, neighborhoods, parks, hospitals, community centers, code violations, building permits, and 311 requests. Montgomery is the pilot deployment to validate the pattern with real data.
+Montgomery, Alabama has robust open GIS and open data. The City of Montgomery's ArcGIS server (gis.montgomeryal.gov) provides zoning, flood zones, neighborhoods, parks, hospitals, community centers, code violations, and building permits. Montgomery is the pilot deployment to validate the pattern with real data.
 
 ## Replicability
 
@@ -44,10 +44,11 @@ The pattern — one address, one civic snapshot — works in any city with ArcGI
 ---
 
 **Challenge:** Civic Access & Community Communication  
-**Hackathon:** World Wide Vibes Hackathon 2026
+**Hackathon:** World Wide Vibes Hackathon 2026  
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
 
 ---
 
 ## Bright Data Bonus (Optional)
 
-When enabled, the app shows an "Official Live Context" section with recent official web updates from Montgomery city domains (montgomeryal.gov, capture.montgomeryal.gov). This is supplemental; it complements the GIS-based modules without replacing them. Disabled by default.
+When enabled, the app runs a **live web search** via Bright Data's SERP API — queries like `site:montgomeryal.gov [neighborhood] public notice` and `Montgomery permits update`. Results are dynamic and contextual to the selected location, unlike the static City Resources links. This is supplemental; it complements the GIS-based modules without replacing them. Disabled by default.

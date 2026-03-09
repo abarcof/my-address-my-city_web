@@ -2,11 +2,13 @@
 
 After the code is on GitHub, follow these steps to complete the hackathon submission.
 
+**Author:** Aicardo Barco Fajardo · abarcof@gmail.com
+
 ---
 
 ## 1. Bright Data (Optional Bonus)
 
-To enable the "Official Live Context" section in What's Happening Nearby:
+To enable the "Official Live Context" section in City Resources:
 
 1. **Get API key** from [Bright Data](https://brightdata.com/cp/setting/users)
 2. **Create SERP zone** at [Bright Data Zones](https://brightdata.com/cp/zones) (use `serp_api`)
