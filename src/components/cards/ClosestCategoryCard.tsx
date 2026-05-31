@@ -49,17 +49,17 @@ export function ClosestCategoryCard({
   }
   if (!result.isAvailable) {
     return (
-      <div className="rounded-lg border border-gray-200 p-4">
-        <div className="text-sm font-medium text-gray-500 mb-1">{result.title}</div>
-        <p className="text-sm text-gray-400">This category is not available right now.</p>
+      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="text-sm font-semibold text-slate-600 mb-1">{result.title}</div>
+        <p className="text-sm text-slate-400">This category is not available right now.</p>
       </div>
     );
   }
   if (!result.item) {
     return (
-      <div className="rounded-lg border border-gray-200 p-4">
-        <div className="text-sm font-medium text-gray-500 mb-1">{result.title}</div>
-        <p className="text-sm text-gray-400">
+      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="text-sm font-semibold text-slate-600 mb-1">{result.title}</div>
+        <p className="text-sm text-slate-400">
           No nearby {result.category.replace('-', ' ')} was found from the current dataset.
         </p>
       </div>
@@ -71,20 +71,20 @@ export function ClosestCategoryCard({
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
 
   return (
-    <div className="rounded-lg border border-gray-200 p-4">
-      <div className="text-sm font-medium text-gray-900">{result.title}</div>
-      <p className="text-sm text-gray-700 mt-0.5">{displayName}</p>
-      <p className="text-xs text-gray-500 mt-1">
+    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+      <div className="text-sm font-semibold text-slate-950">{result.title}</div>
+      <p className="text-sm font-medium text-slate-700 mt-1">{displayName}</p>
+      <p className="text-xs text-slate-500 mt-1.5">
         Approximate distance: {distanceLabel}
       </p>
       {address && (
-        <p className="text-xs text-gray-400 mt-0.5">{address}</p>
+        <p className="text-xs text-slate-400 mt-0.5">{address}</p>
       )}
       <a
         href={directionsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-xs text-blue-600 mt-1 inline-block hover:underline"
+        className="mt-2 inline-flex items-center rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-100 transition hover:bg-blue-100"
       >
         Get directions
       </a>

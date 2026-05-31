@@ -2,7 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: #f1f5f9;
+  }
+}
+
 /* Ensure map container stays below panel when side-by-side */
 .leaflet-container {
   isolation: isolate;
+  background: #dbeafe;
+}
+
+.leaflet-control-zoom a {
+  border-radius: 10px !important;
+  color: #1e3a8a !important;
+}
+
+.leaflet-control-zoom {
+  border: 0 !important;
+  box-shadow: 0 10px 25px rgb(15 23 42 / 0.15) !important;
+}
+
+.leaflet-tooltip {
+  border: 0 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 20px rgb(15 23 42 / 0.18) !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+/* Subtle fade/rise used when switching tab panels */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.22s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up {
+    animation: none;
+  }
 }

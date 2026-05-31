@@ -33,7 +33,7 @@ export function CopyLinkButton() {
     <button
       type="button"
       onClick={handleCopy}
-      className="text-xs text-gray-600 hover:text-blue-600 px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+      className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
       aria-label="Copy link to this location"
       title="Copy link to share this location"
     >

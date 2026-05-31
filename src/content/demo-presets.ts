@@ -15,15 +15,15 @@ export const DEMO_PRESETS: DemoPreset[] = [
   {
     id: 'downtown',
     label: 'City Hall',
-    lat: 32.377,
-    lng: -86.301,
+    lat: 32.37918,
+    lng: -86.30771,
     description: 'Downtown example — 103 N Perry St, Montgomery, AL',
   },
   {
     id: 'residential',
     label: 'Residential',
-    lat: 32.365,
-    lng: -86.299,
+    lat: 32.3545,
+    lng: -86.2925,
     description: 'Residential example — Cloverdale area, Montgomery',
   },
   {
@@ -36,4 +36,4 @@ export const DEMO_PRESETS: DemoPreset[] = [
 ];
 
 /** Set to false to hide demo preset buttons (e.g. production) */
-export const DEMO_PRESETS_ENABLED = true;
+export const DEMO_PRESETS_ENABLED = false;

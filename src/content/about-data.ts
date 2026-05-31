@@ -27,7 +27,7 @@ export const ABOUT_DATA_SECTIONS: AboutDataSection[] = [
   },
   {
     title: 'Your Next Steps with the City',
-    content: `Report a problem, apply for a permit, request public records, or stay up to date with official city news — all from one tab, with direct links to ${APP_CONFIG.cityName}'s official pages. Enter your email to follow any address and be among the first to know when new activity happens nearby.`,
+    content: `Report a problem, apply for a permit, request public records, or stay up to date with official city news — all from one tab, with direct links to ${APP_CONFIG.cityName}'s official pages.`,
   },
   {
     title: 'Share Your Snapshot',

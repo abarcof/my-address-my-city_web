@@ -27,7 +27,7 @@ Plus **City Resources** — links to report issues, apply for permits, request r
 | **This Address** | Zoning, flood risk, neighborhood, council district, property record, trash schedule — from official Montgomery GIS |
 | **What's Closest** | Nearest park, community center, hospital with approximate straight-line distance |
 | **Nearby City Records** | Code violations and building permits within 0.5 miles, last 12 months only |
-| **City Resources** | Links to city services, official pages, and Request alerts |
+| **City Resources** | Links to city services and official pages |
 | **Civic Snapshot Summary** | Compact summary at the top of the panel when a location is selected |
 | **About This Data** | Transparency drawer explaining data sources and methods |
 | **Copy Link** | Shareable deep link to the current snapshot (lat, lng, tab) |

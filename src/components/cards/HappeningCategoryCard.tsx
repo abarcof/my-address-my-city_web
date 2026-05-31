@@ -76,35 +76,35 @@ export function HappeningCategoryCard({
 
   return (
     <div
-      className={`rounded-lg border border-gray-200 border-l-4 ${styles.borderColor} overflow-hidden`}
+      className={`overflow-hidden rounded-xl border border-slate-200 border-l-4 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${styles.borderColor}`}
     >
-      <div className="p-3">
+      <div className="p-4">
         <div className="flex items-center justify-between gap-2 mb-2">
-          <span className="text-sm font-semibold text-gray-900">
-            {label} <span className="font-normal text-gray-500">{count}</span>
+          <span className="text-sm font-semibold text-slate-950">
+            {label} <span className="ml-1 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600">{count}</span>
           </span>
         </div>
 
         {!hasRecords ? (
           <div className="py-1.5 flex items-center gap-2">
             <span
-              className="inline-flex items-center gap-1 text-xs text-gray-500 bg-gray-50 px-2 py-1 rounded"
+              className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-700 ring-1 ring-green-100"
               role="status"
             >
-              <span className="text-green-600" aria-hidden>✓</span>
+              <span aria-hidden>✓</span>
               None in the last {emptyMonths} months
             </span>
-            <span className="text-xs text-gray-400">{emptyMessage}</span>
+            <span className="text-xs text-slate-400">{emptyMessage}</span>
           </div>
         ) : (
           <>
             <ul className="space-y-2">
               {visibleItems.map((item) => (
-                <li key={item.id} className="text-sm pl-1">
-                  <div className="font-semibold text-gray-900">
+                <li key={item.id} className="rounded-lg bg-slate-50/70 p-2.5 text-sm ring-1 ring-slate-100">
+                  <div className="font-semibold text-slate-950">
                     {item.address || item.subtitle || 'Address not available'}
                   </div>
-                  <div className="text-xs text-gray-600 mt-0.5">
+                  <div className="text-xs text-slate-600 mt-0.5">
                     {item.title}
                   </div>
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-1">
@@ -114,7 +114,7 @@ export function HappeningCategoryCard({
                       {item.status}
                     </span>
                     <span
-                      className="text-xs text-gray-500"
+                      className="text-xs text-slate-500"
                       title={formatDateForDisplay(item.rawDate)}
                     >
                       {formatRelativeTime(item.rawDate)}
@@ -128,20 +128,20 @@ export function HappeningCategoryCard({
               <button
                 type="button"
                 onClick={() => setExpanded(true)}
-                className="mt-2 text-xs text-blue-600 hover:text-blue-800 hover:underline font-medium"
+                className="mt-3 text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline"
               >
                 Show {remainingCount} more
               </button>
             )}
 
             {count > 10 && (
-              <p className="mt-2 text-xs text-gray-500">
+              <p className="mt-2 text-xs text-slate-500">
                 Showing {visibleCount} of {count}{' '}
                 <a
                   href="https://opendata.montgomeryal.gov/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-slate-400 hover:text-slate-600"
                 >
                   view all ↗
                 </a>

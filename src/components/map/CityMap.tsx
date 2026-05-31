@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Tooltip, useMapEvents, useMap } from 'react-leaflet';
 import { useAddressStore } from '../../store/address-store';
 import { useClosest } from '../../features/closest/use-closest';
 import { useEffect } from 'react';
@@ -64,6 +64,7 @@ function FlyToSelected() {
 
 export function CityMap() {
   const coordinates = useAddressStore((s) => s.coordinates);
+  const label = useAddressStore((s) => s.label);
   const { data } = useClosest();
   const closestItems = data?.categories?.filter((c) => c.item) ?? [];
 
@@ -83,10 +84,13 @@ export function CityMap() {
       <ClickHandler />
       <FlyToSelected />
       {coordinates && (
-        <Marker
-          position={[coordinates.lat, coordinates.lng]}
-          icon={defaultIcon}
-        />
+        <Marker position={[coordinates.lat, coordinates.lng]} icon={defaultIcon}>
+          {label && (
+            <Tooltip direction="top" offset={[0, -36]}>
+              {label}
+            </Tooltip>
+          )}
+        </Marker>
       )}
       {closestItems.map((c) =>
         c.item ? (
@@ -95,7 +99,11 @@ export function CityMap() {
             position={[c.item.lat, c.item.lng]}
             icon={resourceIcon}
             title={c.item.name}
-          />
+          >
+            <Tooltip direction="top" offset={[0, -6]}>
+              {c.item.name}
+            </Tooltip>
+          </Marker>
         ) : null
       )}
     </MapContainer>

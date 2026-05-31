@@ -11,6 +11,7 @@ import { NextSteps } from '../features/snapshot/NextSteps';
 import { AboutDataButton } from '../components/help/AboutDataButton';
 import { CopyLinkButton } from '../components/actions/CopyLinkButton';
 import { AppFooter } from '../components/layout/AppFooter';
+import { CivicSnapshotSummary } from '../features/summary/CivicSnapshotSummary';
 import { useUrlSync } from '../hooks/use-url-sync';
 import { useAddressStore } from '../store/address-store';
 
@@ -25,13 +26,27 @@ const queryClient = new QueryClient({
 
 function PanelContent() {
   const activeTab = useAddressStore((s) => s.activeTab);
+  const coordinates = useAddressStore((s) => s.coordinates);
+  const isWithinMontgomery = useAddressStore((s) => s.isWithinMontgomery);
+  const showSummary = coordinates != null && isWithinMontgomery;
 
   return (
     <>
+      {showSummary && (
+        <div className="px-4 pt-4 pb-1 shrink-0">
+          <CivicSnapshotSummary />
+        </div>
+      )}
       <TabContainer />
       <div className="flex-1 min-h-0 overflow-y-auto flex flex-col">
         <SidePanel>
-          <div id={`panel-${activeTab}`} role="tabpanel" aria-labelledby={`tab-${activeTab}`}>
+          <div
+            key={activeTab}
+            id={`panel-${activeTab}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${activeTab}`}
+            className="animate-fade-in-up"
+          >
             {activeTab === 'this-address' && <ThisAddress />}
             {activeTab === 'whats-closest' && <WhatsClosest />}
             {activeTab === 'whats-happening-nearby' && <WhatsHappeningNearby />}

@@ -5,5 +5,5 @@ interface SidePanelProps {
 }
 
 export function SidePanel({ children }: SidePanelProps) {
-  return <div className="p-4 space-y-4">{children}</div>;
+  return <div className="p-4 sm:p-5 space-y-4">{children}</div>;
 }

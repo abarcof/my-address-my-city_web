@@ -9,31 +9,31 @@ interface InfoCardProps {
 }
 
 const badgeStyles: Record<string, string> = {
-  blue: 'bg-blue-100 text-blue-800',
-  amber: 'bg-amber-100 text-amber-800',
-  green: 'bg-green-100 text-green-800',
-  gray: 'bg-gray-100 text-gray-700',
+  blue: 'bg-blue-50 text-blue-700 ring-blue-100',
+  amber: 'bg-amber-50 text-amber-800 ring-amber-100',
+  green: 'bg-green-50 text-green-700 ring-green-100',
+  gray: 'bg-slate-100 text-slate-700 ring-slate-200',
 };
 
 export function InfoCard({ title, subtitle, badge, badgeColor = 'blue', children }: InfoCardProps) {
   return (
-    <div className="rounded-lg border border-gray-200 p-4">
-      <div className="flex items-start justify-between gap-2">
+    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+      <div className="flex items-start justify-between gap-3">
         <div>
-          <h3 className="text-sm font-medium text-gray-900">{title}</h3>
+          <h3 className="text-sm font-semibold text-slate-950">{title}</h3>
           {subtitle && (
-            <p className="text-sm text-gray-600 mt-0.5">{subtitle}</p>
+            <p className="text-sm text-slate-600 mt-0.5 leading-relaxed">{subtitle}</p>
           )}
         </div>
         {badge && (
           <span
-            className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium shrink-0 ${badgeStyles[badgeColor]}`}
+            className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ${badgeStyles[badgeColor]}`}
           >
             {badge}
           </span>
         )}
       </div>
-      {children && <div className="mt-2 text-sm text-gray-500">{children}</div>}
+      {children && <div className="mt-3 text-sm leading-relaxed text-slate-600">{children}</div>}
     </div>
   );
 }

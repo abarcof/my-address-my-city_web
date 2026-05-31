@@ -12,24 +12,30 @@ export function TabContainer() {
   const setActiveTab = useAddressStore((s) => s.setActiveTab);
 
   return (
-    <div className="flex border-b border-gray-200" role="tablist">
-      {TABS.map((tab) => (
-        <button
-          key={tab.id}
-          onClick={() => setActiveTab(tab.id)}
-          role="tab"
-          aria-selected={activeTab === tab.id}
-          aria-controls={`panel-${tab.id}`}
-          id={`tab-${tab.id}`}
-          className={`flex-1 px-4 py-2.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset ${
-            activeTab === tab.id
-              ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-500 hover:text-gray-700'
-          }`}
-        >
-          {tab.label}
-        </button>
-      ))}
+    <div
+      className="grid grid-cols-2 gap-1.5 border-b border-slate-200 bg-white px-2 py-2"
+      role="tablist"
+    >
+      {TABS.map((tab) => {
+        const isActive = activeTab === tab.id;
+        return (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            role="tab"
+            aria-selected={isActive}
+            aria-controls={`panel-${tab.id}`}
+            id={`tab-${tab.id}`}
+            className={`rounded-lg px-2 py-2.5 text-center text-xs font-semibold leading-snug transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 sm:text-sm ${
+              isActive
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+            }`}
+          >
+            {tab.label}
+          </button>
+        );
+      })}
     </div>
   );
 }
